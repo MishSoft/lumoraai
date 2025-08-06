@@ -6,7 +6,7 @@ import MobileNav from "./MobileNav";
 
 export default function Header() {
   return (
-    <header className="p-5 flex items-center justify-between">
+    <header className="p-5 fixed bg-white flex w-full items-center justify-between">
       <Link href={""}>
         <h1 className="text-gray-800 text-[25px] font-semibold">
           Lumora<span className="text-[#F93493]">AI</span>

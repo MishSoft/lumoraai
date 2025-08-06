@@ -3,19 +3,19 @@ import React from "react";
 
 const links = [
   {
-    href: "/",
+    href: "#features",
     name: "Features",
   },
   {
-    href: "/",
+    href: "#templates",
     name: "Templates",
   },
   {
-    href: "/",
+    href: "#community",
     name: "Community",
   },
   {
-    href: "/",
+    href: "#pricing",
     name: "Pricing",
   },
 ];
