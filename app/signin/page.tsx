@@ -6,18 +6,22 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Label } from "@/components/ui/label";
 import { createClient } from "@/lib/client";
-import { useRouter } from "next/navigation"; // ✅ ახალი router import
+import { useRouter } from "next/navigation";
+import Loading from "@/components/Loading";
 
 export default function SignInPage() {
   const [isShow, setIsShow] = useState(false);
   const [form, setForm] = useState({ email: "", password: "" });
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const supabase = createClient();
-  const router = useRouter(); // ✅ აქ ინიციალიზაცია
+  const router = useRouter();
 
   async function handleLogin(e: React.FormEvent) {
     e.preventDefault();
+    setLoading(true);
+    setMessage("");
 
     const { email, password } = form;
 
@@ -28,14 +32,18 @@ export default function SignInPage() {
 
     if (error) {
       setMessage(error.message);
+      setLoading(false);
       return;
     }
 
     setMessage("Login successful! Redirecting...");
+
     setTimeout(() => {
-      router.push("/dashboard"); // ✅ აქ redirect უკვე იმუშავებს
+      router.push("/dashboard");
     }, 1000);
   }
+
+  if (loading) return <Loading />;
 
   return (
     <section className="w-full h-screen flex justify-center items-center">
